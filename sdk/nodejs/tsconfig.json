@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "config/index.ts",
+        "config/vars.ts",
+        "getProjects.ts",
+        "getQualityProfiles.ts",
+        "getRules.ts",
+        "getUsers.ts",
+        "group.ts",
+        "index.ts",
+        "permission.ts",
+        "permissionTemplate.ts",
+        "plugin.ts",
+        "provider.ts",
+        "qualityGate.ts",
+        "qualityGateCondition.ts",
+        "qualityGateProjectAssociation.ts",
+        "qualityProfile.ts",
+        "qualityProfileActivateRule.ts",
+        "qualityProfileProjectAssociation.ts",
+        "rule.ts",
+        "setting.ts",
+        "sonarProject.ts",
+        "user.ts",
+        "userToken.ts",
+        "utilities.ts",
+        "webHook.ts"
+    ]
+}

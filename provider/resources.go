@@ -12,27 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package xyz
+package sonarqube
 
 import (
 	"fmt"
 	"path/filepath"
 
+	"github.com/jdamata/terraform-provider-sonarqube/sonarqube"
+	"github.com/jshield/pulumi-sonarqube/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/terraform-providers/terraform-provider-xyz/xyz"
 )
 
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
-	mainPkg = "xyz"
+	mainPkg = "sonarqube"
 	// modules:
-	mainMod = "index" // the xyz module
+	mainMod = "index" // the sonarqube module
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -46,12 +46,12 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(xyz.Provider())
+	p := shimv2.NewProvider(sonarqube.Provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "xyz",
+		P:    p,
+		Name: "sonarqube",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "",
@@ -59,28 +59,28 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
+		Publisher: "James Shield",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
 		// You may host a logo on a domain you control or add an SVG logo for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL:     "",
+		LogoURL: "",
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "",
-		Description: "A Pulumi package for creating and managing xyz cloud resources.",
+		Description:       "A Pulumi package for creating and managing sonarqube cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "xyz", "category/cloud"},
+		Keywords:   []string{"pulumi", "sonarqube", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-xyz",
+		Repository: "https://github.com/jshield/pulumi-sonarqube",
 		// The GitHub Org for the provider - defaults to `terraform-providers`
-		GitHubOrg: "",
-		Config:     map[string]*tfbridge.SchemaInfo{
+		GitHubOrg: "jshield",
+		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -91,7 +91,23 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"sonarqube_group":                              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
+			"sonarqube_user":                               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
+			"sonarqube_user_token":                         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserToken")},
+			"sonarqube_rule":                               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Rule")},
+			"sonarqube_webhook":                            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WebHook")},
+			"sonarqube_plugin":                             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Plugin")},
+			"sonarqube_project":                            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SonarProject")},
+			"sonarqube_setting":                            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Setting")},
+			"sonarqube_permissions":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Permission")},
+			"sonarqube_qualityprofile":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "QualityProfile")},
+			"sonarqube_qualityprofile_activate_rule":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "QualityProfileActivateRule")},
+			"sonarqube_qualityprofile_project_association": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "QualityProfileProjectAssociation")},
+			"sonarqube_qualitygate":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "QualityGate")},
+			"sonarqube_qualitygate_condition":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "QualityGateCondition")},
+			"sonarqube_qualitygate_project_association":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "QualityGateProjectAssociation")},
+			"sonarqube_permission_template":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PermissionTemplate")},
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -106,6 +122,10 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"sonarqube_project":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProjects")},
+			"sonarqube_rule":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRules")},
+			"sonarqube_user":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsers")},
+			"sonarqube_qualityprofile": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getQualityProfiles")},
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainMod, "getAmi")},

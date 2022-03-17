@@ -1,0 +1,1229 @@
+{
+    "name": "sonarqube",
+    "description": "A Pulumi package for creating and managing sonarqube cloud resources.",
+    "keywords": [
+        "pulumi",
+        "sonarqube",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`sonarqube` Terraform Provider](https://github.com/jshield/terraform-provider-sonarqube).",
+    "repository": "https://github.com/jshield/pulumi-sonarqube",
+    "publisher": "James Shield",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "host": {
+                "type": "string"
+            },
+            "installedVersion": {
+                "type": "string"
+            },
+            "pass": {
+                "type": "string"
+            },
+            "tlsInsecureSkipVerify": {
+                "type": "boolean",
+                "description": "Allows ignoring insecure certificates when set to true. Defaults to false. Disabling TLS verification is dangerous and\nshould only be done for local testing.\n"
+            },
+            "user": {
+                "type": "string"
+            }
+        },
+        "defaults": [
+            "host",
+            "pass",
+            "user"
+        ]
+    },
+    "provider": {
+        "description": "The provider type for the sonarqube package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "host": {
+                "type": "string"
+            },
+            "installedVersion": {
+                "type": "string"
+            },
+            "pass": {
+                "type": "string"
+            },
+            "tlsInsecureSkipVerify": {
+                "type": "boolean",
+                "description": "Allows ignoring insecure certificates when set to true. Defaults to false. Disabling TLS verification is dangerous and\nshould only be done for local testing.\n"
+            },
+            "user": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "host",
+            "pass",
+            "user"
+        ],
+        "inputProperties": {
+            "host": {
+                "type": "string"
+            },
+            "installedVersion": {
+                "type": "string"
+            },
+            "pass": {
+                "type": "string"
+            },
+            "tlsInsecureSkipVerify": {
+                "type": "boolean",
+                "description": "Allows ignoring insecure certificates when set to true. Defaults to false. Disabling TLS verification is dangerous and\nshould only be done for local testing.\n"
+            },
+            "user": {
+                "type": "string"
+            }
+        },
+        "requiredInputs": [
+            "host",
+            "pass",
+            "user"
+        ]
+    },
+    "resources": {
+        "sonarqube:index/group:Group": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Group resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/permission:Permission": {
+            "properties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "loginName": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "projectKey": {
+                    "type": "string"
+                },
+                "templateId": {
+                    "type": "string"
+                },
+                "templateName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "permissions"
+            ],
+            "inputProperties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "loginName": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "projectKey": {
+                    "type": "string"
+                },
+                "templateId": {
+                    "type": "string"
+                },
+                "templateName": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "permissions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Permission resources.\n",
+                "properties": {
+                    "groupName": {
+                        "type": "string"
+                    },
+                    "loginName": {
+                        "type": "string"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "projectKey": {
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "type": "string"
+                    },
+                    "templateName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/permissionTemplate:PermissionTemplate": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "projectKeyPattern": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "projectKeyPattern": {
+                    "type": "string"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PermissionTemplate resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "projectKeyPattern": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/plugin:Plugin": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "key"
+            ],
+            "inputProperties": {
+                "key": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "key"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Plugin resources.\n",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/qualityGate:QualityGate": {
+            "properties": {
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Name of the quality gate to set as default\n"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Name of the quality gate to set as default\n"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QualityGate resources.\n",
+                "properties": {
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Name of the quality gate to set as default\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/qualityGateCondition:QualityGateCondition": {
+            "properties": {
+                "gateid": {
+                    "type": "string"
+                },
+                "gatename": {
+                    "type": "string"
+                },
+                "metric": {
+                    "type": "string"
+                },
+                "op": {
+                    "type": "string"
+                },
+                "threshold": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "metric",
+                "op",
+                "threshold"
+            ],
+            "inputProperties": {
+                "gateid": {
+                    "type": "string"
+                },
+                "gatename": {
+                    "type": "string"
+                },
+                "metric": {
+                    "type": "string"
+                },
+                "op": {
+                    "type": "string"
+                },
+                "threshold": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "metric",
+                "op",
+                "threshold"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QualityGateCondition resources.\n",
+                "properties": {
+                    "gateid": {
+                        "type": "string"
+                    },
+                    "gatename": {
+                        "type": "string"
+                    },
+                    "metric": {
+                        "type": "string"
+                    },
+                    "op": {
+                        "type": "string"
+                    },
+                    "threshold": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/qualityGateProjectAssociation:QualityGateProjectAssociation": {
+            "properties": {
+                "gateid": {
+                    "type": "string"
+                },
+                "gatename": {
+                    "type": "string"
+                },
+                "projectkey": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "projectkey"
+            ],
+            "inputProperties": {
+                "gateid": {
+                    "type": "string"
+                },
+                "gatename": {
+                    "type": "string"
+                },
+                "projectkey": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "projectkey"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QualityGateProjectAssociation resources.\n",
+                "properties": {
+                    "gateid": {
+                        "type": "string"
+                    },
+                    "gatename": {
+                        "type": "string"
+                    },
+                    "projectkey": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/qualityProfile:QualityProfile": {
+            "properties": {
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Is the default profile\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Quality profile key\n"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "Quality profile language\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Quality profile name\n"
+                },
+                "parent": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "key",
+                "language",
+                "name"
+            ],
+            "inputProperties": {
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Is the default profile\n"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "Quality profile language\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Quality profile name\n"
+                },
+                "parent": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "language"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QualityProfile resources.\n",
+                "properties": {
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Is the default profile\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "Quality profile key\n"
+                    },
+                    "language": {
+                        "type": "string",
+                        "description": "Quality profile language\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Quality profile name\n"
+                    },
+                    "parent": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/qualityProfileActivateRule:QualityProfileActivateRule": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Quality Profile key. Can be obtained through api/qualityprofiles/search\n"
+                },
+                "params": {
+                    "type": "string",
+                    "description": "Parameters as semi-colon list of =, for example 'params=key1=v1;key2=v2' (Only for custom rule)\n"
+                },
+                "reset": {
+                    "type": "string",
+                    "description": "Reset severity and parameters of activated rule. Set the values defined on parent profile or from rule default values.\n"
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "Rule key\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "Rule severity\n"
+                }
+            },
+            "required": [
+                "key",
+                "rule"
+            ],
+            "inputProperties": {
+                "key": {
+                    "type": "string",
+                    "description": "Quality Profile key. Can be obtained through api/qualityprofiles/search\n"
+                },
+                "params": {
+                    "type": "string",
+                    "description": "Parameters as semi-colon list of =, for example 'params=key1=v1;key2=v2' (Only for custom rule)\n"
+                },
+                "reset": {
+                    "type": "string",
+                    "description": "Reset severity and parameters of activated rule. Set the values defined on parent profile or from rule default values.\n"
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "Rule key\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "Rule severity\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "rule"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QualityProfileActivateRule resources.\n",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Quality Profile key. Can be obtained through api/qualityprofiles/search\n"
+                    },
+                    "params": {
+                        "type": "string",
+                        "description": "Parameters as semi-colon list of =, for example 'params=key1=v1;key2=v2' (Only for custom rule)\n"
+                    },
+                    "reset": {
+                        "type": "string",
+                        "description": "Reset severity and parameters of activated rule. Set the values defined on parent profile or from rule default values.\n"
+                    },
+                    "rule": {
+                        "type": "string",
+                        "description": "Rule key\n"
+                    },
+                    "severity": {
+                        "type": "string",
+                        "description": "Rule severity\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/qualityProfileProjectAssociation:QualityProfileProjectAssociation": {
+            "properties": {
+                "language": {
+                    "type": "string",
+                    "description": "Quality profile language\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Project key\n"
+                },
+                "qualityProfile": {
+                    "type": "string",
+                    "description": "Quality profile name\n"
+                }
+            },
+            "required": [
+                "language",
+                "project",
+                "qualityProfile"
+            ],
+            "inputProperties": {
+                "language": {
+                    "type": "string",
+                    "description": "Quality profile language\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "Project key\n"
+                },
+                "qualityProfile": {
+                    "type": "string",
+                    "description": "Quality profile name\n"
+                }
+            },
+            "requiredInputs": [
+                "language",
+                "project",
+                "qualityProfile"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QualityProfileProjectAssociation resources.\n",
+                "properties": {
+                    "language": {
+                        "type": "string",
+                        "description": "Quality profile language\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Project key\n"
+                    },
+                    "qualityProfile": {
+                        "type": "string",
+                        "description": "Quality profile name\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/rule:Rule": {
+            "properties": {
+                "customKey": {
+                    "type": "string",
+                    "description": "Key of the custom rule\n"
+                },
+                "markdownDescription": {
+                    "type": "string",
+                    "description": "Rule description\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Rule name\n"
+                },
+                "params": {
+                    "type": "string",
+                    "description": "Parameters as semi-colon list of =, for example 'params=key1=v1;key2=v2' (Only for custom rule)\n"
+                },
+                "preventReactivation": {
+                    "type": "string",
+                    "description": "If set to true and if the rule has been deactivated (status 'REMOVED'), a status 409 will be returned\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "Rule severity\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Rule status\n"
+                },
+                "templateKey": {
+                    "type": "string",
+                    "description": "Key of the template rule in order to create a custom rule (mandatory for custom rule)\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Rule type\n"
+                }
+            },
+            "required": [
+                "customKey",
+                "markdownDescription",
+                "name",
+                "templateKey"
+            ],
+            "inputProperties": {
+                "customKey": {
+                    "type": "string",
+                    "description": "Key of the custom rule\n"
+                },
+                "markdownDescription": {
+                    "type": "string",
+                    "description": "Rule description\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Rule name\n"
+                },
+                "params": {
+                    "type": "string",
+                    "description": "Parameters as semi-colon list of =, for example 'params=key1=v1;key2=v2' (Only for custom rule)\n"
+                },
+                "preventReactivation": {
+                    "type": "string",
+                    "description": "If set to true and if the rule has been deactivated (status 'REMOVED'), a status 409 will be returned\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "Rule severity\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Rule status\n"
+                },
+                "templateKey": {
+                    "type": "string",
+                    "description": "Key of the template rule in order to create a custom rule (mandatory for custom rule)\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Rule type\n"
+                }
+            },
+            "requiredInputs": [
+                "customKey",
+                "markdownDescription",
+                "templateKey"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Rule resources.\n",
+                "properties": {
+                    "customKey": {
+                        "type": "string",
+                        "description": "Key of the custom rule\n"
+                    },
+                    "markdownDescription": {
+                        "type": "string",
+                        "description": "Rule description\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Rule name\n"
+                    },
+                    "params": {
+                        "type": "string",
+                        "description": "Parameters as semi-colon list of =, for example 'params=key1=v1;key2=v2' (Only for custom rule)\n"
+                    },
+                    "preventReactivation": {
+                        "type": "string",
+                        "description": "If set to true and if the rule has been deactivated (status 'REMOVED'), a status 409 will be returned\n"
+                    },
+                    "severity": {
+                        "type": "string",
+                        "description": "Rule severity\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Rule status\n"
+                    },
+                    "templateKey": {
+                        "type": "string",
+                        "description": "Key of the template rule in order to create a custom rule (mandatory for custom rule)\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Rule type\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/setting:Setting": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Setting key\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Setting value. To reset a value, please use the reset web service.\n"
+                }
+            },
+            "required": [
+                "key",
+                "value"
+            ],
+            "inputProperties": {
+                "key": {
+                    "type": "string",
+                    "description": "Setting key\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Setting value. To reset a value, please use the reset web service.\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Setting resources.\n",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Setting key\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Setting value. To reset a value, please use the reset web service.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/sonarProject:SonarProject": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "project": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "project"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "project": {
+                    "type": "string"
+                },
+                "visibility": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SonarProject resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/user:User": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "isLocal": {
+                    "type": "boolean"
+                },
+                "loginName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "loginName",
+                "name"
+            ],
+            "inputProperties": {
+                "email": {
+                    "type": "string"
+                },
+                "isLocal": {
+                    "type": "boolean"
+                },
+                "loginName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "loginName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "isLocal": {
+                        "type": "boolean"
+                    },
+                    "loginName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/userToken:UserToken": {
+            "properties": {
+                "loginName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "loginName",
+                "name",
+                "token"
+            ],
+            "inputProperties": {
+                "loginName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "loginName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserToken resources.\n",
+                "properties": {
+                    "loginName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sonarqube:index/webHook:WebHook": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "secret",
+                "url"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WebHook resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "secret": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "sonarqube:index/getProjects:getProjects": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjects.\n",
+                "properties": {
+                    "project": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjects.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "project",
+                    "visibility",
+                    "id"
+                ]
+            }
+        },
+        "sonarqube:index/getQualityProfiles:getQualityProfiles": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getQualityProfiles.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getQualityProfiles.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "isDefault": {
+                        "type": "boolean"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "isDefault",
+                    "key",
+                    "language",
+                    "name",
+                    "id"
+                ]
+            }
+        },
+        "sonarqube:index/getRules:getRules": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getRules.\n",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "key"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRules.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "markdownDescription": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "severity": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "templateKey": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "key",
+                    "markdownDescription",
+                    "name",
+                    "severity",
+                    "status",
+                    "templateKey",
+                    "type",
+                    "id"
+                ]
+            }
+        },
+        "sonarqube:index/getUsers:getUsers": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getUsers.\n",
+                "properties": {
+                    "loginName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loginName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUsers.\n",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "isLocal": {
+                        "type": "boolean"
+                    },
+                    "loginName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email",
+                    "isLocal",
+                    "loginName",
+                    "name",
+                    "id"
+                ]
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com\\pulumi\\pulumi-sonarqube\\sdk\\go\\sonarqube"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing sonarqube cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/jshield/terraform-provider-sonarqube)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-sonarqube` repo](https://github.com/pulumi/pulumi-sonarqube/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`jshield/terraform-provider-sonarqube` repo](https://github.com/jshield/terraform-provider-sonarqube/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/jshield/terraform-provider-sonarqube)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-sonarqube` repo](https://github.com/pulumi/pulumi-sonarqube/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`jshield/terraform-provider-sonarqube` repo](https://github.com/jshield/terraform-provider-sonarqube/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    }
+}
